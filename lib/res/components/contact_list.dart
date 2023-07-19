@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_chat/color.dart';
 import 'package:new_chat/info.dart';
+import 'package:new_chat/view/mobile/mobile_chat_view.dart';
 
 class ContactsList extends StatelessWidget {
   const ContactsList({Key? key}) : super(key: key);
@@ -18,7 +19,12 @@ class ContactsList extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MobileChatScreen(),
+                ),
+              );
             },
             title: Text(
               info[index]['name'].toString(),

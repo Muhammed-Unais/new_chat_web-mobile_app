@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout(
-      {super.key, required this.desktopLayout, required this.mobileLayout});
+      {super.key, required this.webLayout, required this.mobileLayout});
 
-  final Widget desktopLayout;
+  final Widget webLayout;
   final Widget mobileLayout;
 
   @override
@@ -12,7 +12,7 @@ class ResponsiveLayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (buildContext, constraints) {
         if (constraints.maxWidth > 900) {
-          return desktopLayout;
+          return webLayout;
         }
         return mobileLayout;
       },

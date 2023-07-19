@@ -83,7 +83,7 @@ const messages = [
   {"isMe": true, "text": "Obviously, say", "time": "11:03 am"},
   {
     "isMe": false,
-    "text": "haha I wanted you to check out my new channel ^^",
+    "text": "haha I wanted you to check out my new channel please do it fast ok^^",
     "time": "11:04 am"
   },
   {
