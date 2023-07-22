@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_chat/color.dart';
+import 'package:new_chat/res/style/color.dart';
 
 class WebChatAppBar extends StatelessWidget {
   const WebChatAppBar({Key? key}) : super(key: key);

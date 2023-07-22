@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:new_chat/color.dart';
+import 'package:new_chat/res/style/color.dart';
 import 'package:new_chat/res/components/costum_button.dart';
+import 'package:new_chat/utils/routes/routes_name.dart';
 
 class LandingView extends StatelessWidget {
   const LandingView({super.key});
+
+  void navigateToLogin(BuildContext context) {
+    Navigator.pushNamed(context, RoutesName.loginScreen);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +54,10 @@ class LandingView extends StatelessWidget {
               height: 15,
             ),
             SizedBox(
-              width: size.width*0.75,
+              width: size.width * 0.75,
               child: CustomButton(
                 text: "AGREE AND CONTINUE",
-                onPressed: () {},
+                onPressed:() => navigateToLogin(context),
               ),
             )
           ],

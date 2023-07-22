@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_chat/color.dart';
+import 'package:new_chat/res/style/color.dart';
 
 class RecievedMessageCard extends StatelessWidget {
   const RecievedMessageCard({
