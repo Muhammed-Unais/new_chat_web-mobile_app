@@ -25,7 +25,7 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) {
             return const Scaffold(
-              body: ErrorComponent(),
+              body: ErrorComponent(error: "Unknown Error"),
             );
           },
         );

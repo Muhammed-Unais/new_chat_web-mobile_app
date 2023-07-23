@@ -1,10 +1,19 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:new_chat/models/user_model.dart';
+import 'package:new_chat/res/components/error_component.dart';
+import 'package:new_chat/res/components/loading.dart';
 import 'package:new_chat/res/style/color.dart';
 import 'package:new_chat/firebase_options.dart';
+import 'package:new_chat/utils/responsive/responsive.dart';
 import 'package:new_chat/utils/routes/routes.dart';
 import 'package:new_chat/view/features/boarding/landing_view.dart';
+import 'package:new_chat/view/mobile/mobile_layout.dart';
+import 'package:new_chat/view/web/web_layout.dart';
+import 'package:new_chat/view_model/auth/auth_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,11 +25,11 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -29,7 +38,26 @@ class MyApp extends StatelessWidget {
         colorScheme: const ColorScheme.dark(background: backgroundColor),
         appBarTheme: const AppBarTheme(color: appBarColor),
       ),
-      home: const LandingView(),
+      home: ref.watch(userDataAuthProvider).when(
+        data: (UserModel? user) {
+          log(user.toString());
+          if (user == null) {
+            return const LandingView();
+          }
+          return const ResponsiveLayout(
+            webLayout: WebLayout(),
+            mobileLayout: MobileLayout(),
+          );
+        },
+        error: (error, stackTrace) {
+          return ErrorComponent(
+            error: error.toString(),
+          );
+        },
+        loading: () {
+          return const Loading();
+        },
+      ),
       onGenerateRoute: Routes.genericRoute,
     );
   }

@@ -80,7 +80,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 ),
                 Row(
                   children: [
-                    Text("+${_country?.phoneCode ?? 91}"),
+                    Text("+${_country?.phoneCode ?? ""}"),
                     const SizedBox(
                       width: 10,
                     ),

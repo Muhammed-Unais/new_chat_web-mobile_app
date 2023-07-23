@@ -13,7 +13,6 @@ class OTPView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Verifying your number"),
