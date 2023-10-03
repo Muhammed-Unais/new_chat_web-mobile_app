@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_chat/res/components/costum_button.dart';
 import 'package:new_chat/res/style/color.dart';
 import 'package:new_chat/utils/utils.dart';
-import 'package:new_chat/view_model/auth/auth_view_model.dart';
+import 'package:new_chat/features/auth/view_model/auth_view_model.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});

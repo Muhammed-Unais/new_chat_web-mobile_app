@@ -1,19 +1,17 @@
-import 'dart:developer';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:new_chat/models/user_model.dart';
+import 'package:new_chat/features/auth/model/user_model.dart';
 import 'package:new_chat/res/components/error_component.dart';
 import 'package:new_chat/res/components/loading.dart';
 import 'package:new_chat/res/style/color.dart';
 import 'package:new_chat/firebase_options.dart';
 import 'package:new_chat/utils/responsive/responsive.dart';
 import 'package:new_chat/utils/routes/routes.dart';
-import 'package:new_chat/view/features/boarding/landing_view.dart';
-import 'package:new_chat/view/mobile/mobile_layout.dart';
-import 'package:new_chat/view/web/web_layout.dart';
-import 'package:new_chat/view_model/auth/auth_view_model.dart';
+import 'package:new_chat/features/boarding/view/landing_view.dart';
+import 'package:new_chat/features/mobile/mobile_layout.dart';
+import 'package:new_chat/features/web/web_layout.dart';
+import 'package:new_chat/features/auth/view_model/auth_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +38,6 @@ class MyApp extends ConsumerWidget {
       ),
       home: ref.watch(userDataAuthProvider).when(
         data: (UserModel? user) {
-          log(user.toString());
           if (user == null) {
             return const LandingView();
           }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:new_chat/res/style/color.dart';
 import 'package:new_chat/res/components/chat_list.dart';
 import 'package:new_chat/res/components/contact_list.dart';
-import 'package:new_chat/view/web/components/web_chat_appbar.dart';
-import 'package:new_chat/view/web/components/web_message_input.dart';
-import 'package:new_chat/view/web/components/web_profile_appbar.dart';
-import 'package:new_chat/view/web/components/web_search_bar.dart';
+import 'package:new_chat/features/web/components/web_chat_appbar.dart';
+import 'package:new_chat/features/web/components/web_message_input.dart';
+import 'package:new_chat/features/web/components/web_profile_appbar.dart';
+import 'package:new_chat/features/web/components/web_search_bar.dart';
 
 class WebLayout extends StatelessWidget {
   const WebLayout({super.key});
@@ -16,10 +16,10 @@ class WebLayout extends StatelessWidget {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
-                children: const<Widget> [
+                children: <Widget> [
                   WebProfileBar(),
                   WebSearchBar(),
                   ContactsList(),
@@ -40,8 +40,8 @@ class WebLayout extends StatelessWidget {
                 ),
               ),
             ),
-            child: Column(
-              children:  const [
+            child: const Column(
+              children:  [
                 WebChatAppBar(),
                 Expanded(
                   child: ChatList(),

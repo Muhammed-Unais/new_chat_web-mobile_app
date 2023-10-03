@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_chat/utils/constants/image.dart';
 import 'package:new_chat/utils/utils.dart';
-import 'package:new_chat/view_model/auth/auth_view_model.dart';
+import 'package:new_chat/features/auth/view_model/auth_view_model.dart';
 
 class UserInformationView extends ConsumerStatefulWidget {
   const UserInformationView({super.key});

@@ -5,13 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_chat/data/firebase_strorage.dart';
-import 'package:new_chat/models/user_model.dart';
+import 'package:new_chat/features/auth/model/user_model.dart';
 import 'package:new_chat/utils/constants/image.dart';
 import 'package:new_chat/utils/responsive/responsive.dart';
 import 'package:new_chat/utils/routes/routes_name.dart';
 import 'package:new_chat/utils/utils.dart';
-import 'package:new_chat/view/mobile/mobile_layout.dart';
-import 'package:new_chat/view/web/web_layout.dart';
+import 'package:new_chat/features/mobile/mobile_layout.dart';
+import 'package:new_chat/features/web/web_layout.dart';
 
 final authrepositoryProvider = Provider((ref) {
   return AuthRepository(FirebaseAuth.instance, FirebaseFirestore.instance);
@@ -95,7 +95,7 @@ class AuthRepository {
           uid: uid,
           profilePic: photoUrl,
           isOnline: true,
-          phoneNumber: auth.currentUser!.uid,
+          phoneNumber: auth.currentUser!.phoneNumber!,
           groupId: []);
 
       await firestore.collection('user').doc(uid).set(user.toMap());
@@ -112,4 +112,10 @@ class AuthRepository {
       Utils.showSnackBar(context: context, content: e.toString());
     }
   }
+
+  Stream<UserModel> userData(String userId){
+    return firestore.collection('user').doc(userId).snapshots().map((event) {
+      return UserModel.fromMap(event.data()!);
+    });
+  } 
 }

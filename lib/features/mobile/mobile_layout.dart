@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:new_chat/res/style/color.dart';
 import 'package:new_chat/res/components/contact_list.dart';
-import 'package:new_chat/view/mobile/components/appbar.dart';
+import 'package:new_chat/utils/routes/routes_name.dart';
+import 'package:new_chat/features/mobile/components/appbar.dart';
 
 class MobileLayout extends StatelessWidget {
   const MobileLayout({super.key});
@@ -12,9 +13,11 @@ class MobileLayout extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: const HomeAppBar(),
-        body:const ContactsList(),
+        body: const ContactsList(),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, RoutesName.selectConatactsScreen);
+          },
           backgroundColor: tabColor,
           child: const Icon(
             Icons.comment,
@@ -25,5 +28,3 @@ class MobileLayout extends StatelessWidget {
     );
   }
 }
-
-

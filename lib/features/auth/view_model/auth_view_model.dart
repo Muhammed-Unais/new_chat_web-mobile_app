@@ -1,9 +1,8 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:new_chat/models/user_model.dart';
-import 'package:new_chat/repository/auth_repository.dart';
+import 'package:new_chat/features/auth/model/user_model.dart';
+import 'package:new_chat/features/auth/repository/auth_repository.dart';
 
 final authViewModelProvider = Provider((ref) {
   final authRepository = ref.watch(authrepositoryProvider);
@@ -45,5 +44,9 @@ class AuthViewModel {
       ref: ref,
       context: context,
     );
+  }
+
+  Stream<UserModel> userDataById(String userId) {
+    return authRepository.userData(userId);
   }
 }

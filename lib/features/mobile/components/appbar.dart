@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_chat/res/style/color.dart';
 
-class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({
     super.key,
   });
